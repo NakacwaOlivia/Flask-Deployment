@@ -5,49 +5,58 @@
       DEEP LEARNING FOR DETECTION OF <br />
       MAIZE LEAF DISEASE
     </h2>
-    <div class="row justify-content-evenly">
-      <div class="container">
-          <hr />
 
-          <div class="col-md-4 col-md-offset-5 border border-white">
-            <div class="form-group">
-              <div class="main-img-preview">
-                <img
-                  class="thumbnail img-preview"
-                  src="http://farm4.static.flickr.com/3316/3546531954_eef60a3d37.jpg"
-                  title="Preview image"
-                />
-              </div>
-              <div class="input-group">
-                <input
-                  id="fakeUploadLogo"
-                  class="form-control fake-shadow"
-                  placeholder="Choose File"
-                  disabled="disabled"
-                />
-                <div class="input-group-btn">
-                  <div class="fileUpload btn btn-danger fake-shadow">
-                    <span
-                      ><i class="glyphicon glyphicon-upload"></i> Upload
-                      Image</span
-                    >
-                    <input
-                      id="logo-id"
-                      name="logo"
-                      type="file"
-                      class="attachment_upload"
-                    />
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+    <hr />
+    <div class ="container-fluid">
+      <div class ="row">
+
+
+        <div class ="col-md-6 col-sm-6">
+          <div class="container">
+            <div class="col-md-10 col-md-offset-5 border border-white">
+              <div class="form-group">
+                <div class="main-img-preview">
+                  <img
+                    class="thumbnail img-preview"
+                    src="http://farm4.static.flickr.com/3316/3546531954_eef60a3d37.jpg"
+                    title="Preview image"
+                  />
+                </div>
+                <div class="input-group">
+                  <input
+                    id="fakeUploadLogo"
+                    class="form-control fake-shadow"
+                    placeholder="Choose File"
+                    disabled="disabled"
+                  />
+                  <div class="input-group-btn">
+                    <div class="fileUpload btn btn-danger fake-shadow">
+                      <span
+                        ><i class="glyphicon glyphicon-upload"></i> Upload
+                        Image</span
+                      >
+                      <input
+                        id="logo-id"
+                        name="logo"
+                        type="file"
+                        class="attachment_upload"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
+          </div>
+        </div>
+        </div>
+
+        <div class ="col-md-6 col-sm-6">
+          <div class="col-10">
+            <div class="col col-sm-6 border border-white">
+              <h5>Class: {{class}}</h5>
+              <h5>Score: {{score}}</h5>
             </div>
-        </div>
-      </div>
-      <div class="col-4">
-        <div class="col col-sm-6 border border-white">
-          <h5>Class: {{class}}</h5>
-          <h5>Score: {{score}}</h5>
-        </div>
+         </div>
       </div>
     </div>
 
@@ -62,3 +71,5 @@
     {% endblock %}
   </div>
 </div>
+
+
