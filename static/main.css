@@ -28,4 +28,13 @@
 }
 .img-preview {
     max-width: 100%;
+    object-fit: cover;
+}
+
+input[type="file"]::file-selector-button {
+    font-weight: bold;
+    background-color: rgb(235, 64, 52);
+    color: white;
+    border-radius: 0.1em;
+    transition: 1s;
 }

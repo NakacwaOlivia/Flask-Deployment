@@ -14,54 +14,47 @@
 
         <div class ="col-md-6 col-sm-6">
           <div class="container">
-            <div class="col-md-10 col-md-offset-5 border border-white">
+            <div class="col-md-11 col-md-offset-5 border border-white">
               <div class="form-group">
                 <div class="main-img-preview">
                   <img
                     class="thumbnail img-preview"
-                    src="http://farm4.static.flickr.com/3316/3546531954_eef60a3d37.jpg"
-                    title="Preview image"
+                    id="display_image"
                   />
+
                 </div>
                 <div class="input-group">
                   <input
                     id="fakeUploadLogo"
                     class="form-control fake-shadow"
-                    placeholder="Choose File"
-                    disabled="disabled"
+                    placeholder="Up File"
+                    type="file"
+                    onchange="loadFile(event)"
+                    accept="image/png, image/jpg, image/jpeg, image/bmp"
                   />
-                  <div class="input-group-btn">
-                    <div class="fileUpload btn btn-danger fake-shadow">
-                      <span
-                        ><i class="glyphicon glyphicon-upload"></i> Upload
-                        Image</span
-                      >
-                      <input
-                        id="logo-id"
-                        name="logo"
-                        type="file"
-                        class="attachment_upload"
-                      />
-                    </div>
-                  </div>
+                  
+
                 </div>
               </div>
           </div>
         </div>
+        <button class="btn btn-light mt-3 me-5 ms-6">Upload Image</button>
+        <button class="btn btn-light mt-3">Predict</button>
         </div>
 
         <div class ="col-md-6 col-sm-6">
           <div class="col-10">
-            <div class="col col-sm-6 border border-white">
-              <h5>Class: {{class}}</h5>
-              <h5>Score: {{score}}</h5>
+            <div class="col col-sm-6 border border-white ">
+              <h5>Class: {{ class }} {class}</h5>
+              <h5>Score: {{ score }} {score}</h5>
             </div>
          </div>
       </div>
     </div>
+    
 
-    <!-- <script src="{{url_for('static', filename='main.js')}}"></script> -->
 
+    <script src="{{url_for('static', filename='main.js')}}"></script>
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
