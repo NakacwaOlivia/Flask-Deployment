@@ -2,3 +2,9 @@
 env/
 
 __pycache__
+
+# uploaded images
+static/uploads
+
+# original app.py
+app_original.py

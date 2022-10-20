@@ -1,4 +1,8 @@
-{% extends 'index.html' %} {% block head %} {% endblock %} {% block body %}
+{% extends "index.html" %}
+
+
+{% block body %}
+
 <div class="p-5">
   <div class="container text-center p-5" style="background-color: #0b9492">
     <h2 class="text-white p-5" style="font-family: Noto Serif; font-size: 24px">
@@ -8,61 +12,43 @@
 
     <!-- ---------------------------------------------------------------------------------------------------- -->
     <hr />
-    <div class ="container-fluid">
-      <div class ="row">
-
-
-        <div class ="col-md-6 col-sm-6">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
           <div class="container">
-            <div class="col-md-11 col-md-offset-5 border border-white">
+            <div class="col-md-11 col-md-offset-5">
               <div class="form-group">
                 <div class="main-img-preview">
-                  <img
-                    class="thumbnail img-preview"
-                    id="display_image"
-                  />
+                  <img class="thumbnail img-preview" id="display_image" />
 
                 </div>
                 <div class="input-group">
-                  <input
-                    id="fakeUploadLogo"
-                    class="form-control fake-shadow"
-                    placeholder="Up File"
-                    type="file"
-                    onchange="loadFile(event)"
-                    accept="image/png, image/jpg, image/jpeg, image/bmp"
-                  />
-                  
-
+                  <form action="/predict" method="post" enctype="multipart/form-data">
+                    <input id="fakeUploadLogo" name="file" class="form-control fake-shadow" placeholder="Up File"
+                      type="file" onchange="loadFile(event)" accept="image/png, image/jpg, image/jpeg, image/bmp" />
+                    <div class="col-md-12 text-center">
+                      <button class="btn btn-light mt-3" type="submit">Predict</button>
+                  </form>
                 </div>
               </div>
+            </div>
           </div>
         </div>
-        <button class="btn btn-light mt-3 me-5 ms-6">Upload Image</button>
-        <button class="btn btn-light mt-3">Predict</button>
-        </div>
+      </div>
 
-        <div class ="col-md-6 col-sm-6">
-          <div class="col-10">
-            <div class="col col-sm-6 border border-white ">
-              <h5>Class: {{ class }} {class}</h5>
-              <h5>Score: {{ score }} {score}</h5>
-            </div>
-         </div>
+      <div class="col-md-6 col-sm-6">
+        <div class="col-10">
+          <div class="col col-sm-6  border border-white ">
+            <h5>Class:.........</h5>
+            <h5>Score:.........</h5>
+          </div>
+        </div>
       </div>
     </div>
-    
 
 
     <script src="{{url_for('static', filename='main.js')}}"></script>
-    <script
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"
-      integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj"
-      crossorigin="anonymous"
-    ></script>
-
-    {% endblock %}
   </div>
 </div>
 
-
+{% endblock %}

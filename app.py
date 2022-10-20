@@ -1,58 +1,89 @@
-from flask import Flask, render_template, request
-from keras_preprocessing.image import img_to_array
+from flask import Flask, render_template, request, jsonify
 from keras.models import load_model
-import cv2
+from keras import models
+import os
+from werkzeug.utils import secure_filename
+from apphelper import *
+
+from keras.preprocessing import image
 import numpy as np
-
-from flask_cors import CORS, cross_origin
-
-names = ["fallarmyworm", "Healthy"]
+import tensorflow as tf
 
 
-
-# Process image and predict label
-def processImg(IMG_PATH):
-    # Read image
-    model = load_model("/model.h5")
-    
-    # Preprocess image
-    image = cv2.imread(IMG_PATH)
-    image = cv2.resize(image, (199, 199))
-    image = image.astype("float") / 255.0
-    image = img_to_array(image)
-    image = np.expand_dims(image, axis=0)
-
-    res = model.predict(image)
-    label = np.argmax(res)
-    print("Label", label)
-    labelName = names[label]
-    print("Label name:", labelName)
-    return labelName
-
-
-# Initializing flask application
 app = Flask(__name__)
-cors = CORS(app)
 
 @app.route("/")
-
-# Home page with render template
-@app.route("/")
-
-def postsPage():
+def index():
     return render_template("base.html")
 
-# Process images
-@app.route("/process", methods=["POST"])
-def processReq():
-    data = request.files["img"]
-    data.save("img.jpg")
+@app.route("/predict", methods = ['POST'])
+def upload_file():
 
-    resp = processImg("img.jpg")
+    if request.method == 'POST':
+        f = request.files['file']
+
+        # Save the file to ./uploads folder
+        basepath = os.path.dirname(__file__)
+        print(basepath)
+        file_path = os.path.join(basepath, 'static','uploads', secure_filename(f.filename))
+        f.save(file_path)
+
+        prediction=get_class(file_path)
+        print(prediction)
+        score=prediction[1]
+        prediction=prediction[0]
+    return render_template("upload.html", predictions=prediction, display_image=f.filename, scores=score)
 
 
-    return resp
+if __name__ == '__main__':
+    #app.debug = True
+    app.run(debug=True,use_reloader=False)
 
 
-if __name__ == "__main__":
-    app.run(debug=True)
+
+
+
+
+
+
+
+
+
+
+
+
+# UPLOAD_FOLDER = 'static/upload_images'
+# app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+
+# ******************************************************************
+
+# @app.route("/")
+# def connect():
+# 	return "Connect"
+# # **********************************************************************
+
+# @app.route('/api', methods=['POST'])
+# def predict():
+#   if request.method == 'POST':
+#         if 'file1' not in request.files:
+#             return 'there is no file1 in form!'
+#         file1 = request.files['file1']
+#         path1 = os.path.join(app.config['UPLOAD_FOLDER'], file1.filename)
+#         file1.save(path1)
+#         path_to_sample_documents="Images/"+file1.filename
+#         model = models.load_model('model.h5') 
+
+#   test =tf.keras.preprocessing.image.load_img(path_to_sample_documents, target_size=(224, 224))  
+#   test = tf.keras.preprocessing.image.img_to_array(test)
+#   test = np.expand_dims(test, axis=0)
+#   result = model.predict(test)
+#   if result[0][0] == 1:
+#     prediction = 'cat'
+#   else:
+#     prediction = 'dog'
+
+#     return render_template("upload.html", predictions=prediction, display_image=f.filename) 
+
+# # *********************************************************************************************************
+
+
