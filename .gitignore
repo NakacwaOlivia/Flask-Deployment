@@ -8,3 +8,6 @@ static/uploads
 
 # original app.py
 app_original.py
+
+# requirements file
+requirements_originally.txt
