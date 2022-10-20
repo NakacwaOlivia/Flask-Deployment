@@ -11,6 +11,6 @@ def get_class(file_path):
     if result[0][0] == 1:
         prediction = 'healthy'
     else:
-        prediction = 'sick (fall army worm)'
+        prediction = 'affected (fall army worm)'
     return prediction, result[0][0]
 
