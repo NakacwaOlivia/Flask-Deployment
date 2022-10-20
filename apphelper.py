@@ -1,8 +1,4 @@
-from tensorflow.keras.applications.resnet50 import ResNet50 as myModel
-from tensorflow.keras.applications.resnet50 import preprocess_input, decode_predictions
 import tensorflow as tf
-
-from tensorflow.keras.preprocessing import image
 import numpy as np
 
 def get_class(file_path):
@@ -15,6 +11,6 @@ def get_class(file_path):
     if result[0][0] == 1:
         prediction = 'healthy'
     else:
-        prediction = 'sick'
+        prediction = 'sick (fall army worm)'
     return prediction, result[0][0]
 

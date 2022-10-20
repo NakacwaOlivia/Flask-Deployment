@@ -10,7 +10,6 @@
             MAIZE LEAF DISEASE (COMPUTER VISION)
         </h2>
 
-        <!-- ---------------------------------------------------------------------------------------------------- -->
         <hr />
         <div class="container-fluid">
             <div class="row">
@@ -27,12 +26,13 @@
 
                 <div class="col-md-6 col-sm-6">
                     <p><b>Predicted Probable Category of Uploaded Image</b></p>
-                    <div class="col-10">
-                        <div class="col col-sm-6">
+                        <div class="col m mb-1">
                             <h5>Class: {{predictions}}</h5>
                             <h5>Score: {{scores}}</h5>
+                            <p>
+                            Depending on the image category. If the image is healthy, the score is closer to 1(one) and
+                            if diseased, score is closer to 0(zero).</p>
                         </div>
-                    </div>
                 </div>
             </div>
 
