@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+
+
+{% block body %}
+
+<div class="p-5">
+  <div class="container text-center p-5" style="background-color: #0b9492">
+    <h2 class="text-white p-5" style="font-family: Noto Serif; font-size: 24px">
+      IMAGE CLASSIFICATION OF <br />
+      MAIZE LEAF DISEASE (COMPUTER VISION)
+    </h2>
+
+    <!-- ---------------------------------------------------------------------------------------------------- -->
+    <hr />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 col-sm-6">
+          <div class="container">
+            <div class="col-md-11 col-md-offset-5">
+              <div class="form-group">
+                <div class="main-img-preview">
+                  <img class="thumbnail img-preview" id="display_image" />
+
+                </div>
+                <div class="input-group">
+                  <form action="/predict" method="post" enctype="multipart/form-data">
+                    <input id="fakeUploadLogo" name="file" class="form-control fake-shadow" placeholder="Up File"
+                      type="file" onchange="loadFile(event)" accept="image/png, image/jpg, image/jpeg, image/bmp" />
+                    <div class="col-md-12 text-center">
+                      <button class="btn btn-light mt-3" type="submit">Predict</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6 col-sm-6">
+        <div class="col-10">
+          <div class="col col-sm-6  border border-white ">
+            <h5>Class: .........</h5>
+            <h5>Score: .........</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="{{url_for('static', filename='main.js')}}"></script>
+{% endblock %}

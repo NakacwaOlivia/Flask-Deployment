@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+
+
+{% block body %}
+
+<div class="p-5">
+    <div class="container text-center p-5" style="background-color: #0b9492">
+        <h2 class="text-white p-5" style="font-family: Noto Serif; font-size: 24px">
+            IMAGE CLASSIFICATION OF <br />
+            MAIZE LEAF DISEASE (COMPUTER VISION)
+        </h2>
+
+        <hr />
+        <div class="container-fluid">
+            <div class="row">
+
+                <div class="col-md-5">
+                    <div class="image-container">
+                        <figure>
+                            <img id="display_image" src="/static/uploads/{{display_image}}"
+                                style="width:400px;height:250px;">
+                        </figure>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-sm-6">
+                    <p><b>Predicted Probable Category of Uploaded Image</b></p>
+                        <div class="col m mb-1">
+                            <h5>Category: {{predictions}}</h5>
+                            <h5>Score: {{scores}}</h5>
+                            <p>
+                            Depending on the image category. If the image is healthy, the score is closer to 1(one) and
+                            if diseased, score is closer to 0(zero).</p>
+                        </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="upload-other">
+                        <p><b>Upload another?</b></p>
+                        <form action="/predict" method="POST" enctype="multipart/form-data">
+                            <input name="file" class="form-control fake-shadow" type="file" onchange="loadFile(event)"
+                                accept="image/png, image/jpg, image/jpeg, image/bmp" />
+                            <button class="btn btn-light mt-3" type="submit">Predict</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+
+            <script src="{{url_for('static', filename='main.js')}}"></script>
+        </div>
+    </div>
+</div>
+{% endblock %}
