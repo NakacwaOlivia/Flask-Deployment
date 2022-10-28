@@ -1,13 +1,11 @@
 # #virtual environment files
-# env/
+env/
 
-# __pycache__
+# python files
+__pycache__/
 
 # # uploaded images
 # static/uploads
 
-# # original app.py
-# app_original.py
-
-# # requirements file
-# requirements_originally.txt
+# procfile
+Procfile
